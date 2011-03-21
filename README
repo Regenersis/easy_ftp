@@ -1,0 +1,21 @@
+Easy FTP is a lightweight, easy to use gem created by Stellios.
+
+In his bid for world domination, and since EasyCafe went down the pan he has turned his glare upon the the complexity of FTP.
+To date the great one has introduced luggage charges and now a simple to use FTP interface.
+This is currently free to use for a trial period, however in the near future you will be subject to weight restrictions.
+
+ATM we only support EasyFTP.put( local_path_to_file, connection_details ) which copies a local file to a remote dir.
+The connection_details should be in the form of a hash, with keys as strings.
+
+All keys are mandatory apart from 'upload_directory'.
+
+For example:
+{
+    'hostname' => "123.45.67.8",
+    'port' => "21",
+    'user' => "billy_bob".
+    'password' => 'password',
+    'upload_directory' => '/change/to/remote/dir'    # optional
+}
+
+
