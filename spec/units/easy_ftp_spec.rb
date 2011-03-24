@@ -39,13 +39,8 @@ describe EasyFTP do
 
   describe "get a file from the server" do
     it "should retrieve a file from the ftp server" do      
-      
-    end
-
-    it "should write the retrieved file to our preferred path" do
-    end
-
-    it "should signal that the file has been retrieved successfully" do
+      @stub_ftp.should_receive( :get ).with('bookstore.xml', '/public/bookstore.xml')
+      EasyFTP.get('bookstore.xml','/public/bookstore.xml', @config_hash)
     end
   end
 
@@ -104,6 +99,7 @@ describe EasyFTP do
     result.stub!( :puttextfile )
     result.stub!( :close )
     result.stub!( :list )
+    result.stub!( :get )
     return result
   end
 

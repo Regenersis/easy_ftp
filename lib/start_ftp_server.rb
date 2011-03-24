@@ -18,5 +18,5 @@ def start_ftp_server( config_hash )
 
     s = DynFTPServer.new(:host => host, :port => port, :root => root, :authentication => auth)
     s.mainloop
-   end
+  end
 end

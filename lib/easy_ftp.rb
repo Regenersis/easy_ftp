@@ -9,7 +9,9 @@ class EasyFTP
   end
 
   def self.get( file_name_to_get, local_path_to_file, connection_details )
-
+    connect(connection_details) do |ftp|
+      ftp.get(file_name_to_get, local_path_to_file)
+    end
   end
 
   def self.list(connection_details)
