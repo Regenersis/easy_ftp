@@ -1,7 +1,0 @@
-test:
-  ftp:
-    hostname: 127.0.0.1
-    port: 2000
-    upload_directory:
-    user: cucumber_user
-    password: 

@@ -25,6 +25,3 @@ namespace :spec do
     t.spec_files = FileList['spec/integration/**/*_spec.rb']
   end
 end
-
-
-
