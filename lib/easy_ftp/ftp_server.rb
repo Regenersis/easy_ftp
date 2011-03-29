@@ -18,14 +18,8 @@ module EasyFTP
 
       @@pid = fork do
         Signal.trap("HUP") do 
-          puts
-          puts
-          puts("killing ftp server")
           exit
         end
-        puts
-        puts
-        puts "starting ftp server"
         root = FSProvider.new(serve_dir)
         auth =
           lambda do |user,pass|

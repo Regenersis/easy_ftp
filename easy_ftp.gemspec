@@ -1,10 +1,9 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "easy_ftp/version"
 
 Gem::Specification.new do |s|
   s.name        = "easy_ftp"
-  s.version     = EasyFtp::VERSION
+  s.version     = "0.0.2"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Peter Atkin", "Kenny Primrose", "Colin Gemmell", "Matthew Lang"]
   s.email       = ["jiggypete@gmail.com", "kprimrose@regenersis.com", "pythonandchips@gmail.com", "matthew@matthewlang.com"]
