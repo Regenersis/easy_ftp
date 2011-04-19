@@ -5,6 +5,7 @@ describe EasyFTP do
     @config_hash = {'hostname' => "www.google.com", 'upload_directory' => "temp", 'user' => "Flash Gordon", 'password' => "Gordons Alive", 'port' => 21}
     @stub_ftp = initialise_ftp_stub
     Net::FTP.stub!(:new).and_return( @stub_ftp )
+    @stub_ftp.should_receive(:passive=).with(true).once
   end
 
   describe "put file to server" do

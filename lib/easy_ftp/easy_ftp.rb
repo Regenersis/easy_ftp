@@ -45,6 +45,7 @@ module EasyFTP
 
   def self.connect(connection_details, &block)
     ftp=Net::FTP.new
+    ftp.passive = true
     begin
       ftp.connect connection_details['hostname'], connection_details['port']
       ftp.login connection_details['user'], connection_details['password']

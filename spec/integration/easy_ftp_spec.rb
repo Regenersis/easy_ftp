@@ -56,7 +56,7 @@ describe EasyFTP do
   end
 
   it "should be able to connect to server" do
-    EasyFTP.connect(@config_hash) do
+    EasyFTP.connect(@config_hash) do |ftp|
     end
   end
 
