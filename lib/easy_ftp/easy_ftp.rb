@@ -24,7 +24,7 @@ module EasyFTP
         unless file_name == "." || file_name == ".."
           files << {:file_name => file_name}
         end
-      end 
+      end
       return files
     end
   end

@@ -9,6 +9,7 @@ describe EasyFTP do
         Dir.mkdir(folder)
       end
     end
+    
   end
 
   def delete_test_folders

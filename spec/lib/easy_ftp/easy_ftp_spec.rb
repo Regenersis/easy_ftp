@@ -74,7 +74,7 @@ describe EasyFTP do
 
     it "should not move directory when no remote upload_directory is configured " do
       @config_hash['upload_directory'] = nil
-      @stub_ftp.should_not_receive( :chdir )    
+      @stub_ftp.should_not_receive( :chdir )
       EasyFTP.connect(@config_hash )
     end
 
@@ -85,7 +85,7 @@ describe EasyFTP do
     end
 
     it "should close the ftp connection" do
-      @stub_ftp.should_receive( :close )    
+      @stub_ftp.should_receive( :close )
       EasyFTP.connect(@config_hash )
     end
 
