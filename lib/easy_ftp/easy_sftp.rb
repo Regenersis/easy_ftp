@@ -1,4 +1,4 @@
-require 'net/ssh'
+require 'net/sftp'
 
 module EasySFTP
   def self.put( local_path_to_file, remote_directory, connection_details )

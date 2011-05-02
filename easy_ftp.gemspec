@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name        = "easy_ftp"
   s.version     = "0.0.4"
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Peter AitkEn", "Kenny Primrose", "Colin Gemmell", "Matthew Lang","Chris Wright", "Charlie Quinn"]
+  s.authors     = ["Peter Aitken", "Kenny Primrose", "Colin Gemmell", "Matthew Lang","Chris Wright", "Charlie Quinn"]
   s.email       = ["jiggypete@gmail.com", "kprimrose@regenersis.com", "pythonandchips@gmail.com", "matthew@matthewlang.co.uk","cjwright83y@gmail.com","charlesquinn1984@gmail.com"]
   s.homepage    = "http://www.jiggypete.com"
   s.summary     = "Wrapper round Net:FTP and SFTP"
