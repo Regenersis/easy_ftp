@@ -8,23 +8,29 @@ end
 
 module Net::SFTP
 
-  def self.start(hostname, user, password)
+  def self.start(hostname, user, options )
+    @@hostname = hostname
+    @@user = user
+    @@options = options
     yield StubSFTPPlaceholder.stub_sftp
+  end
+
+  def self.hostname
+    return @@hostname
+  end
+  
+  def self.user
+    return @@user
+  end
+
+  def self.options
+    return @@options
   end
 end
 
 def initialise_sftp_stub
   result = stub("sftp");
-  result.stub( :dir )#, :foreach ) do
-    #puts "Hello"
-  #end
-#    result.stub!( :login )
-#    result.stub!( :chdir )
-#    result.stub!( :puttextfile )
-#    result.stub!( :close )
-#    result.stub!( :list )
-#    result.stub!( :get )
-#    result.stub!( :delete )
+  result.stub( :upload )  
   return result
 end
 
@@ -32,6 +38,25 @@ describe EasySFTP do
   before(:each) do
     @config_hash = {'hostname' => "www.google.com", 'user' => "Flash Gordon", 'password' => "Gordons Alive", 'port' => 21}
     StubSFTPPlaceholder.stub_sftp = initialise_sftp_stub
+  end
+
+  describe "connection details" do
+
+    before( :each ) do
+      EasySFTP.put("expected/route/to/file.txt", "temp", @config_hash)
+    end
+
+    it "should supply the hostname" do
+      Net::SFTP.hostname.should == "www.google.com"
+    end
+
+    it "should supply the user" do
+      Net::SFTP.user.should == "Flash Gordon"
+    end
+
+    it "should supply the password in the options" do
+      Net::SFTP.options.should == {:password => "Gordons Alive"}
+    end
   end
 
   describe "put file to server" do
