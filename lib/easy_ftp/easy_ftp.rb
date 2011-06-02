@@ -10,7 +10,11 @@ module EasyFTP
 
   def self.get( file_name_to_get, local_path_to_file, connection_details )
     connect(connection_details) do |ftp|
-      ftp.get(file_name_to_get, local_path_to_file)
+      if (File.directory?(local_path_to_file))
+        ftp.get(file_name_to_get, local_path_to_file + "/" + file_name_to_get)
+      else
+        ftp.get(file_name_to_get, local_path_to_file)
+      end
     end
   end
 

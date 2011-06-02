@@ -49,9 +49,19 @@ describe EasyFTP do
   end
 
   describe "get a file from the server" do
-    it "should retrieve a file from the ftp server" do      
-      @stub_ftp.should_receive( :get ).with('bookstore.xml', '/public/bookstore.xml')
-      EasyFTP.get('bookstore.xml','/public/bookstore.xml', @config_hash)
+    context "when a path and filename is given" do
+      it "should retrieve a file from the ftp server" do
+        File.stub!(:directory?).and_return(false)
+        @stub_ftp.should_receive( :get ).with('bookstore.xml', '/public/bookstore.xml')
+        EasyFTP.get('bookstore.xml','/public/bookstore.xml', @config_hash)
+      end
+    end
+    context "when just a path is given" do
+      it "should retrieve a file from the ftp server" do
+        File.stub!(:directory?).and_return(true)
+        @stub_ftp.should_receive( :get ).with('bookstore.xml', '/public/bookstore.xml')
+        EasyFTP.get('bookstore.xml','/public', @config_hash)
+      end
     end
   end
 

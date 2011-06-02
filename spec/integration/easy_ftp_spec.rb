@@ -75,6 +75,13 @@ describe EasyFTP do
     File.exists?(local_file).should eql true
   end
 
+  it "should pull file from server and keep the filename if local path is given" do
+    remote_file = create_remote_file 'test.txt'
+    local_file = File.join(@local_folder, "test.txt")
+    EasyFTP.get('test.txt', @local_folder,  @config_hash)
+    File.exists?(local_file).should eql true
+  end
+
   it "should list remote folder content" do
     remote_file = create_remote_file 'test.txt'
     list = EasyFTP.list(@config_hash)
