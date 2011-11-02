@@ -9,7 +9,7 @@ describe EasyFTP do
         Dir.mkdir(folder)
       end
     end
-    
+
   end
 
   def delete_test_folders
@@ -100,5 +100,27 @@ describe EasyFTP do
 #    EasyFTP.move("test.txt", "/alt/test.txt", @config_hash)
 #    File.exists?(File.join(@remote_folder, "alt/test.txt")).should eql false
 #  end
+  describe EasyFTP::Utility do
+    context "download_files" do
+      before do
+        @local_file = File.join(@local_folder, "test.txt")
+        remote_file = create_remote_file 'test.txt'
+        @settings = {}
+        @settings[:ftp_authorisation_details] = @config_hash
+      end
+      it "should download all files currently in the folder" do
+        EasyFTP::Utility.download_files(@local_folder, @settings)
+        File.exists?(@local_file).should eql true
+      end
+
+      it "should call the given block with the method" do
+        passed_file = nil
+        EasyFTP::Utility.download_files(@local_folder, @settings) do |file|
+          passed_file = file
+        end
+        passed_file.should_not be_nil
+      end
+    end
+  end
 end
 

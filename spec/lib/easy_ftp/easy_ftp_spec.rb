@@ -34,8 +34,8 @@ describe EasyFTP do
       files << "-r--r--r-- 1 ftp ftp         279658 Jun 25  2007 hamlet.xml\n"
       files << "-r--r--r-- 1 ftp ftp          80641 Jun 25  2007 hamlet.zip\n"
       files << "-r--r--r-- 1 ftp ftp           2164 Jun 25  2007 japanese.xml\n"
-    
-      @stub_ftp.should_receive( :list ).with('*').and_return files
+
+      @stub_ftp.should_receive( :list ).with('*').and_return files.lines
       @lines = EasyFTP.list(@config_hash )
     end
 
@@ -66,7 +66,7 @@ describe EasyFTP do
   end
 
   describe "connect to server" do
-    
+
     it "should connect to the configured url and port" do
       @stub_ftp.should_receive( :connect ).with( @config_hash['hostname'], @config_hash['port'] )
       EasyFTP.connect(@config_hash )
@@ -109,7 +109,6 @@ describe EasyFTP do
     end
   end
 
-
   private
 
   def initialise_ftp_stub
@@ -124,5 +123,5 @@ describe EasyFTP do
     result.stub!( :delete )
     return result
   end
-
 end
+

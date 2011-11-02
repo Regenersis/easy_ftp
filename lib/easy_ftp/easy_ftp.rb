@@ -60,6 +60,6 @@ module EasyFTP
     ensure
       ftp.close
     end
-
   end
+
 end
