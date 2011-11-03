@@ -5,11 +5,12 @@ module EasyFTP
       files = EasySFTP.list(settings[:directory], ftp_authorisation_details)
       files.uniq.each do |file|
         remote_file_path = "#{settings[:directory]}/#{file}"
+        local_file_path = File.join(destination, file)
         unless File.exists?(destination)
           Dir.mkdir(destination)
         end
-        EasySFTP.get(remote_file_path, destination, ftp_authorisation_details)
-        yield(File.join(destination, file)) if block_given?
+        EasySFTP.get(remote_file_path, local_file_path, ftp_authorisation_details)
+        yield(local_file_path) if block_given?
         if settings[:delete_file]
           remote_file_path = "#{settings[:directory]}/#{file}"
           EasySFTP.delete(remote_file_path)
