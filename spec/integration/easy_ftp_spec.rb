@@ -117,7 +117,7 @@ describe EasyFTP do
 
       it "should delete the file if required" do
         @settings[:delete_file] = true
-        EasySFTP.should_receive(:delete).with("./test.text").once
+        EasySFTP.should_receive(:delete).with("./test.text", @settings[:ftp_authorisation_details]).once
         EasyFTP::Utility.download_files(@local_folder, @settings)
       end
     end

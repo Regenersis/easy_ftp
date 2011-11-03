@@ -13,7 +13,7 @@ module EasyFTP
         yield(local_file_path) if block_given?
         if settings[:delete_file]
           remote_file_path = "#{settings[:directory]}/#{file}"
-          EasySFTP.delete(remote_file_path)
+          EasySFTP.delete(remote_file_path, ftp_authorisation_details)
         end
       end
     end
