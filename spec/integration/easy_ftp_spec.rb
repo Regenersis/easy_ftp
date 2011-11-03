@@ -103,22 +103,15 @@ describe EasyFTP do
   describe EasyFTP::Utility do
     context "download_files" do
       before do
+        EasySFTP.should_receive(:list).and_return(["test.text"])
+        EasySFTP.should_receive(:get).once
         @local_file = File.join(@local_folder, "test.txt")
         remote_file = create_remote_file 'test.txt'
-        @settings = {}
+        @settings = {:directory => "."}
         @settings[:ftp_authorisation_details] = @config_hash
       end
       it "should download all files currently in the folder" do
         EasyFTP::Utility.download_files(@local_folder, @settings)
-        File.exists?(@local_file).should eql true
-      end
-
-      it "should call the given block with the method" do
-        passed_file = nil
-        EasyFTP::Utility.download_files(@local_folder, @settings) do |file|
-          passed_file = file
-        end
-        passed_file.should_not be_nil
       end
     end
   end

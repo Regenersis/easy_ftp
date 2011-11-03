@@ -18,7 +18,7 @@ module Net::SFTP
   def self.hostname
     return @@hostname
   end
-  
+
   def self.user
     return @@user
   end
@@ -30,11 +30,12 @@ end
 
 def initialise_sftp_stub
   result = stub("sftp");
-  result.stub( :upload )  
+  result.stub( :upload )
   return result
 end
 
 describe EasySFTP do
+
   before(:each) do
     @config_hash = {'hostname' => "www.google.com", 'user' => "Flash Gordon", 'password' => "Gordons Alive", 'port' => 21}
     StubSFTPPlaceholder.stub_sftp = initialise_sftp_stub
