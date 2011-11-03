@@ -111,6 +111,13 @@ describe EasyFTP do
         @settings[:ftp_authorisation_details] = @config_hash
       end
       it "should download all files currently in the folder" do
+        EasySFTP.should_receive(:delete).with("./test.text").never
+        EasyFTP::Utility.download_files(@local_folder, @settings)
+      end
+
+      it "should delete the file if required" do
+        @settings[:delete_file] = true
+        EasySFTP.should_receive(:delete).with("./test.text").once
         EasyFTP::Utility.download_files(@local_folder, @settings)
       end
     end
