@@ -35,7 +35,7 @@ module EasySFTP
 
   private
 
-  def self.connect( connection_details, retrys = 5 )
+  def self.connect( connection_details, retrys = 10 )
     Retry.retryable(:tries => retrys) do
       Net::SFTP.start(connection_details['hostname'], connection_details['user'], :password => connection_details['password']) do |sftp|
         yield sftp
