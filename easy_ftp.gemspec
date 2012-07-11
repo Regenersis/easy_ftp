@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "easy_ftp"
-  s.version     = "0.0.13"
+  s.version     = "0.0.14"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Peter Aitken", "Kenny Primrose", "Colin Gemmell", "Matthew Lang","Chris Wright", "Charlie Quinn"]
   s.email       = ["jiggypete@gmail.com", "ken.primrose@googlemail.com", "pythonandchips@gmail.com", "matthew@matthewlang.co.uk","cjwright83y@gmail.com","charlesquinn1984@gmail.com"]
